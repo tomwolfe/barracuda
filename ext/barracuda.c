@@ -265,7 +265,7 @@ object_to_type(VALUE self, VALUE type)
 static VALUE
 fixnum_to_type(VALUE self, VALUE type)
 {
-    VALUE out = rb_funcall(rb_cType, rb_intern("new"), 1, self);
+    VALUE out = rb_funcall(rb_cType, id_new, 1, self);
     return type_method_missing(out, type);
 }
 
