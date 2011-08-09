@@ -549,8 +549,7 @@ program_method_missing(int argc, VALUE *argv, VALUE self)
         }
 
         if (CLASS_OF(item) == rb_cBuffer) {
-            struct buffer *buffer;
-            Data_Get_Struct(rb_ivar_get(item, id_buffer_data), struct buffer, buffer);
+            GET_BUFFER();
             
             buffer_update_cache(item);
             buffer_write(item, commands);
