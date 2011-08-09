@@ -242,6 +242,8 @@ type_initialize(VALUE self, VALUE object)
     return self;
 }
 
+/* TODO: Tom: it seems like this is not needed...
+  shouldn't it be replaced with just data_type_set ? */
 static VALUE
 type_method_missing(VALUE self, VALUE type)
 {
@@ -465,7 +467,6 @@ program_initialize(int argc, VALUE *argv, VALUE self)
     if (source != Qnil) {
         program_compile(self, source);
     }
-    
     return self;
 }
 
@@ -474,7 +475,6 @@ program_compile(VALUE self, VALUE source)
 {
     const char *c_source;
     GET_PROGRAM();
-    StringValue(source);
     
     if (program->program) {
         clReleaseProgram(program->program);
